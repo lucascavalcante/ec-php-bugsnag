@@ -34,7 +34,7 @@ services:
     container_name: transaction-nginx
     restart: unless-stopped
     ports: 
-      - 8004:80
+      - 8006:80
     depends_on: 
       - app
     volumes: 
