@@ -38,7 +38,7 @@ Para acessar o serviço `ms-transaction`:
 http://127.0.0.1:8006
 ```
 
-## Derrubando todos a aplicação
+## Derrubando a aplicação
 
 Se quiser derrubar a aplicação, basta executar o arquivo `stop.sh`:
 ```
