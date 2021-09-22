@@ -4,9 +4,6 @@ FROM php:8.0.10-fpm
 ARG user
 ARG uid
 
-# Install system dependencies
-RUN pecl install xdebug
-
 RUN apt-get update && apt-get install -y \
     git \
     curl \
@@ -21,7 +18,6 @@ RUN apt-get update && apt-get install -y \
     && docker-php-ext-install pcntl \
     && docker-php-ext-install bcmath \
     && docker-php-ext-install gd \
-    && docker-php-ext-enable xdebug \
     && docker-php-source delete
 
 # Clear cache
