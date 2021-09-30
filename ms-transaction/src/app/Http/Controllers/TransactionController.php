@@ -23,7 +23,7 @@ class TransactionController extends Controller
             $transaction = $this->service->process($request->all());
             return response()->json(['message' => $transaction]);
         } catch (Exception $e) {
-            return response()->json(['error' => $e->getMessage()]);
+            return response()->json(['error' => $e->getMessage()], $e->getCode());
         }
     }
 }

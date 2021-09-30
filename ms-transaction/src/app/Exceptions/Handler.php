@@ -8,6 +8,7 @@ use Illuminate\Validation\ValidationException;
 use Laravel\Lumen\Exceptions\Handler as ExceptionHandler;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Throwable;
+use Bugsnag\BugsnagLaravel\Facades\Bugsnag;
 
 class Handler extends ExceptionHandler
 {
@@ -17,10 +18,10 @@ class Handler extends ExceptionHandler
      * @var array
      */
     protected $dontReport = [
-        AuthorizationException::class,
-        HttpException::class,
-        ModelNotFoundException::class,
-        ValidationException::class,
+        // AuthorizationException::class,
+        // HttpException::class,
+        // ModelNotFoundException::class,
+        // ValidationException::class,
     ];
 
     /**
@@ -35,6 +36,10 @@ class Handler extends ExceptionHandler
      */
     public function report(Throwable $exception)
     {
+        Bugsnag::setNotifyReleaseStages(['local', 'production']);
+        Bugsnag::setReleaseStage('local');
+        Bugsnag::notifyException($exception);
+
         parent::report($exception);
     }
 
